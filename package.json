@@ -1,0 +1,21 @@
+{
+  "name": "v_comet",
+  "version": "0.0.4",
+  "description": "real time content updater",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "real",
+    "time",
+    "update",
+    "api",
+    "call",
+    "iframe",
+    "react",
+    "content"
+  ],
+  "author": "ruwan chamara",
+  "license": "ISC"
+}
