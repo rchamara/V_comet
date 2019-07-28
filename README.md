@@ -28,5 +28,5 @@ Wrap your state variable using V_
    **time:** call api end point with this time interval. if it is not defined call only when component render. (_optional_)
    
    
-![](https://gifyu.com/image/EogT)
+![](https://s3.gifyu.com/images/v_comet_gif.gif)
 
