@@ -1,10 +1,14 @@
 {
   "name": "v_comet",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "real time content updater",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rchamara/V_comet.git"
   },
   "keywords": [
     "real",
