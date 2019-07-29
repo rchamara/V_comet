@@ -99,6 +99,7 @@ function V_core(__user_variable_name, __user_data_object) {
     }
 
     if (_time > 0) {
+        fetchCall(_url, _this_scope, __variable_name, _return);
         setInterval(function () {
             fetchCall(_url, _this_scope, __variable_name, _return);
         }, _time);
