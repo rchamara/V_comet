@@ -27,32 +27,38 @@ exports.V_ = function(__variable_name, __user_data_object) { return V_core(__var
 function V_core(__user_variable_name, __user_data_object) {
 
     /**
-     *
+     *@description
+     * state variable name that user init in react app
      */
     var __variable_name
 
     /**
-     *
+     *@description
+     * this scope in react component
      */
     var _this_scope;
 
     /**
-     *
+     *@description
+     * api url path for fetch call
      */
     var _url;
 
     /**
-     *
+     *@description
+     * return this default value as props if api call failed
      */
     var _default;
 
     /**
-     *
+     *@description
+     * return method body, if user init method comet core pass return value of api to method body
      */
     var _return;
 
     /**
-     *
+     *@description
+     * time gap with two api call
      */
     var _time;
 
@@ -99,15 +105,14 @@ function V_core(__user_variable_name, __user_data_object) {
     }
 
     if (_time > 0) {
-        fetchCall(_url, _this_scope, __variable_name, _return);
+        fetchCall(_url, _this_scope, __variable_name, _return, _default);
         setInterval(function () {
-            fetchCall(_url, _this_scope, __variable_name, _return);
+            fetchCall(_url, _this_scope, __variable_name, _return, _default);
         }, _time);
     } else {
-        fetchCall(_url, _this_scope, __variable_name, _return);
+        fetchCall(_url, _this_scope, __variable_name, _return, _default);
     }
 
-    return _default;
 }
 
 /**
@@ -127,15 +132,25 @@ function isEmptyOrNullOrUndefined(param_value) {
  * @param VAR_NAME
  * @param RETURN
  */
-function fetchCall(URL, THIS, VAR_NAME, RETURN) {
+function fetchCall(URL, THIS, VAR_NAME, RETURN, DEFAULT) {
     fetch(URL)
         .then((res) => res.json())
         .then(function (data) {
+            if (data.error !== undefined ) {
+                var obj = {};
+                obj[VAR_NAME] = DEFAULT;
+                THIS.setState(obj);
+            } else {
+                var obj = {};
+                obj[VAR_NAME] = data;
+                THIS.setState(obj);
+            }
+
+        })
+        .catch(function (error) {
             var obj = {};
-            obj[VAR_NAME] = data;
+            obj[VAR_NAME] = DEFAULT;
             THIS.setState(obj);
         });
-
-    return;
 }
 
