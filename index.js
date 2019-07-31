@@ -99,7 +99,7 @@ function V_core(__user_variable_name, __user_data_object) {
     }
 
     try {
-        _return = __user_data_object._return;
+        _return = __user_data_object.return;
     } catch (e) {
         _return = null;
     }
@@ -136,13 +136,18 @@ function fetchCall(URL, THIS, VAR_NAME, RETURN, DEFAULT) {
     fetch(URL)
         .then((res) => res.json())
         .then(function (data) {
-            if (data.error !== undefined ) {
+            if (typeof data.error !== 'undefined' ) {
                 var obj = {};
                 obj[VAR_NAME] = DEFAULT;
                 THIS.setState(obj);
             } else {
                 var obj = {};
-                obj[VAR_NAME] = data;
+                if (typeof RETURN === 'undefined') {
+                    obj[VAR_NAME] = data;
+                } else {
+                    obj[VAR_NAME] = RETURN(data);
+
+                }
                 THIS.setState(obj);
             }
 
