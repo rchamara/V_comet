@@ -1,12 +1,24 @@
-# ** V_Comet Real time content updater for React JS**
+#**V_Comet**
+**Real time content updater for React-JS and Angular**
 
 
 ###### Just only need wrap your state variable using V-comet
  
- _You can use any place in component, but we recommended initializing inside the componentDidMount method
- and make sure to pass state variable with `' '` or `" "`_
+ _You can use any place in component, but we recommended initializing inside the componentDidMount method in react or ngAfterViewInit
+ in angular and make sure to pass state variable with `' '` or `" "` in react. In angular just use variable with this keyword._
  
- `V_('this.state.title', object);`
+ ```
+ import { V_ } from 'v_comet';
+ 
+ /**
+    title is the variable that need to change.
+ */
+ 
+ V_('this.state.title', object); /** in react */
+ 
+ V_('this.title', object); /** in angular */
+ 
+ ```
  
 ### **Example code:**
 

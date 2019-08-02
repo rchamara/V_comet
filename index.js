@@ -139,23 +139,42 @@ function fetchCall(URL, THIS, VAR_NAME, RETURN, DEFAULT) {
             if (typeof data.error !== 'undefined' ) {
                 var obj = {};
                 obj[VAR_NAME] = DEFAULT;
-                THIS.setState(obj);
+                try {
+                    THIS.setState(obj);
+                } catch (e) {
+                    if (e.message === 'THIS.setState is not a function') {
+                        THIS[VAR_NAME] = obj[VAR_NAME];
+                    }
+                }
+
             } else {
                 var obj = {};
                 if (typeof RETURN === 'undefined') {
                     obj[VAR_NAME] = data;
                 } else {
                     obj[VAR_NAME] = RETURN(data);
-
                 }
-                THIS.setState(obj);
+                try {
+                    THIS.setState(obj);
+                } catch (e) {
+                    if (e.message === 'THIS.setState is not a function') {
+                        THIS[VAR_NAME] = obj[VAR_NAME];
+                    }
+                }
+
             }
 
         })
         .catch(function (error) {
             var obj = {};
             obj[VAR_NAME] = DEFAULT;
-            THIS.setState(obj);
+            try {
+                THIS.setState(obj);
+            } catch (e) {
+                if (e.message === 'THIS.setState is not a function') {
+                    THIS[VAR_NAME] = obj[VAR_NAME];
+                }
+            }
         });
 }
 
