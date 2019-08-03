@@ -4,6 +4,7 @@
  *
  * @param __variable_name       pass by the user that comet core should change as a response with call
  * @param __user_data_object    object hold all necessary data that user should pass
+ * @param __fetch_call_config   fetch call custom config data object
  *                              {
  *                                  this_scope: user_this_scope, (mandatory)
  *                                  url: api_call_url, (mandatory)
@@ -62,6 +63,15 @@ function V_core(__user_variable_name, __user_data_object) {
      */
     var _time;
 
+    /**
+     *
+     * @type {{}}
+     * @private
+     * @description
+     * user fetch api config data
+     */
+    var _fetch_config;
+
     if (isEmptyOrNullOrUndefined(__user_variable_name)) { console.log("V_comet ERROR: variable not pass"); return; }
     if (__user_data_object == undefined || __user_data_object == null) { console.log("V_comet ERROR: object not pass"); return; }
 
@@ -104,13 +114,19 @@ function V_core(__user_variable_name, __user_data_object) {
         _return = null;
     }
 
+    try {
+        _fetch_config = __user_data_object.config;
+    } catch (e) {
+        _fetch_config = {}
+    }
+
     if (_time > 0) {
-        fetchCall(_url, _this_scope, __variable_name, _return, _default);
+        fetchCall(_url, _this_scope, __variable_name, _return, _default, _fetch_config);
         setInterval(function () {
-            fetchCall(_url, _this_scope, __variable_name, _return, _default);
+            fetchCall(_url, _this_scope, __variable_name, _return, _default, _fetch_config);
         }, _time);
     } else {
-        fetchCall(_url, _this_scope, __variable_name, _return, _default);
+        fetchCall(_url, _this_scope, __variable_name, _return, _default, _fetch_config);
     }
 
 }
@@ -132,8 +148,8 @@ function isEmptyOrNullOrUndefined(param_value) {
  * @param VAR_NAME
  * @param RETURN
  */
-function fetchCall(URL, THIS, VAR_NAME, RETURN, DEFAULT) {
-    fetch(URL)
+function fetchCall(URL, THIS, VAR_NAME, RETURN, DEFAULT, FETCH_CONFIG) {
+    fetch(URL, FETCH_CONFIG)
         .then((res) => res.json())
         .then(function (data) {
             if (typeof data.error !== 'undefined' ) {

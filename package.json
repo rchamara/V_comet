@@ -1,6 +1,6 @@
 {
   "name": "v_comet",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "real time content updater",
   "main": "index.js",
   "scripts": {
