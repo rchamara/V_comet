@@ -3,6 +3,12 @@
 
 **Real time content updater for React-JS and Angular**
 
+## **Demo**
+   
+   **_Using with react app for showing real time clock_**
+   
+![](https://s3.gifyu.com/images/v_comet_gif.gif)
+
 
 ## **How to install**
 ```
@@ -133,11 +139,6 @@ or
    
    ``` 
    
-## **Demo**
-   
-   **_Using with react app for showing real time clock_**
-   
-![](https://s3.gifyu.com/images/v_comet_gif.gif)
 
 ## **Author**
 
