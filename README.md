@@ -138,7 +138,10 @@ or
          }
    
    ``` 
-   
+ 
+## **Support / Donations**  
+If you want to support v_comet development, please consider donating .it helps us to keep this projects active and alive!  
+[Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NEZ8RG69E3WGU&source=url)
 
 ## **Author**
 
